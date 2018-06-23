@@ -1,6 +1,6 @@
 {
   "name": "sun-build-cli",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "自定义脚手架测试",
   "main": "index.js",
   "scripts": {
