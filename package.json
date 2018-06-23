@@ -10,7 +10,7 @@
     "x-build": "./bin/x-build.js"
   },
   "repository": {
-   " type": "git",
+    " type": "git",
     "url": "git+https://github.com/xiaochangzai/x-build-cli.git"
   },
   "keywords": [
@@ -28,5 +28,8 @@
     "commander": "^2.15.1",
     "download-git-repo": "^1.0.2",
     "ora": "^2.1.0"
+  },
+  "devDependencies": {
+    "inquirer": "^6.0.0"
   }
 }
