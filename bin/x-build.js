@@ -4,7 +4,8 @@ const download = require('download-git-repo');
 const chalk = require('chalk');
 const ora = require('ora');
 
-program.version('0.1.1')
+program.version('1.0.3')
+    .option('-v, --version', 'v 1.0.3')
     .option('i, init [name]', '初始化x-build项目')
     .parse(process.argv);
     const nameQuestion = {

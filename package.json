@@ -10,7 +10,7 @@
     "x-build": "./bin/x-build.js"
   },
   "repository": {
-    "type": "git",
+   " type": "git",
     "url": "git+https://github.com/xiaochangzai/x-build-cli.git"
   },
   "keywords": [
