@@ -4,8 +4,8 @@ const download = require('download-git-repo');
 const chalk = require('chalk');
 const ora = require('ora');
 
-program.version('1.0.3')
-    .option('-v, --version', 'v 1.0.3')
+program.version('1.0.4')
+    .option('-v, --version', 'v 1.0.4')
     .option('i, init [name]', '初始化x-build项目')
     .parse(process.argv);
     const nameQuestion = {
@@ -62,6 +62,7 @@ if (program.init) {
                     
                     spinner.clear()
                     console.info(chalk.blueBright('下载成功'));
+                    spinner.clear()
                     console.info('');
                     console.info(chalk.green('-----------------------------------------------------'));
                     console.info('');
