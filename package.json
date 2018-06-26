@@ -1,6 +1,6 @@
 {
   "name": "sun-build-cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "自定义脚手架测试",
   "main": "index.js",
   "scripts": {
@@ -27,9 +27,7 @@
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
     "download-git-repo": "^1.0.2",
-    "ora": "^2.1.0"
-  },
-  "devDependencies": {
+    "ora": "^2.1.0",
     "inquirer": "^6.0.0"
   }
 }

@@ -5,8 +5,8 @@ const chalk = require('chalk');
 const ora = require('ora');
 const inquirer = require('inquirer')
 
-program.version('1.0.5')
-    .option('-v, --version', 'v 1.0.5')
+program.version('1.0.6')
+    .option('-v, --version', 'v 1.0.6')
     .option('i, init [name]', '初始化x-build项目')
     .parse(process.argv);
     const nameQuestion = {
