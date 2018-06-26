@@ -5,15 +5,16 @@ const chalk = require('chalk');
 const ora = require('ora');
 const inquirer = require('inquirer')
 
-program.version('1.0.6')
-    .option('-v, --version', 'v 1.0.6')
-    .option('i, init [name]', '初始化x-build项目')
+program.version('1.0.7')
+    .option('-v, --version', 'v 1.0.7')
+    .option('i, typescript [name]', '初始化项目')
+    .option('i, tsvue [name]', '初始化项目')
     .parse(process.argv);
     const nameQuestion = {
         type: 'input',
         message: `项目名称: `,
         name: 'name',
-        default: 'x-build'
+        default: program.typescript || program.tsvue
       };
       
       const versionQuestion = {
@@ -44,10 +45,12 @@ program.version('1.0.6')
         default: true
       };
 
-      
-if (program.init) { 
+      init(program.typescript, 'xiaochangzai/typescriptstartproject')
+      init(program.tsvue, 'xiaochangzai/TypeScript-Vue-Starter')
+function init (name, githubSrc) {
+  if (name) {
     console.info('')
-    if (program.init) {
+    if (name) {
         console.info('');
         inquirer.prompt([
           nameQuestion,
@@ -57,7 +60,7 @@ if (program.init) {
           remQuestion
         ]).then(function(answers){
             const spinner = ora('正在创建项目' + program.init).start(); 
-            download('xiaochangzai/MyDemo1', program.init, function (err) { 
+            download(githubSrc, program.init, function (err) { 
                 if (!err) { 
                     // 可以输出一些项目成功的信息 
                     
@@ -75,6 +78,8 @@ if (program.init) {
                     console.info('npm run dev')
                     console.info('')
                     console.info('')
+
+                    callback()
                  }else{ 
                      // 可以输出一些项目失败的信息 
                      console.error('下载项目失败')
@@ -83,4 +88,27 @@ if (program.init) {
         });
    
     }
+}
+}
+
+function callback () {
+  if (answers.template === true) {
+    fs.unlinkSync(`${process.cwd()}/${answers.name}/src/index.html`);
+  } else {
+    fs.unlinkSync(`${process.cwd()}/${answers.name}/src/index.pug`);
+  }
+  fs.readFile(`${process.cwd()}/${answers.name}/package.json`, (err, data) => {
+    if (err) throw err;
+    let _data = JSON.parse(data.toString())
+    _data.name = answers.name
+    _data.version = answers.version
+    _data.port = answers.port
+    _data.template = answers.template ? "pug" : "html"
+    _data.rem = answers.rem
+    let str = JSON.stringify(_data, null, 4);
+    fs.writeFile(`${process.cwd()}/${answers.name}/package.json`, str, function (err) {
+      if (err) throw err;
+      process.exit()
+    })
+  });
 }
